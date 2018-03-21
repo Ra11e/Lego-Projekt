@@ -17,7 +17,8 @@
     
     <% if (session.getAttribute("user") != null) {
             out.println("<li><a href='FrontController?command=" + session.getAttribute("role") + "'>" + session.getAttribute("role") + "</a></li>");
-             out.println("<li><a href='./LogOut'>Log Out</a></li>");
+            out.println("<li><a href='./LogOut'>Log Out</a></li>");
+             
 }%>
     
     
