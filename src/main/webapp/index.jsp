@@ -12,6 +12,7 @@
         <title>Welcome page</title>
     </head>
     <body>
+        <%@include file="WEB-INF/navbar.jsp" %>
         <h1>Welcome to Sem 2</h1>
         
         <table>

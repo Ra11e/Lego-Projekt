@@ -12,6 +12,7 @@
         <title>Help</title>
     </head>
     <body>
+        <%@include file="navbar.jsp" %>
         <h1>This is how you order a lego house</h1>
         
     </body>
