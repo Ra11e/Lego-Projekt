@@ -9,7 +9,18 @@ public class Order {
     private int height;
     private int width;
     private String status;
+    private String email;
 
+    public Order(int orderId, int userId, int length, int height, int width, String status, String email) {
+        this.orderId = orderId;
+        this.userId = userId;
+        this.length = length;
+        this.height = height;
+        this.width = width;
+        this.status = status;
+        this.email = email;
+    }
+    
     public Order(int orderId, int userId, int length, int height, int width, String status) {
         this.orderId = orderId;
         this.userId = userId;
@@ -18,6 +29,7 @@ public class Order {
         this.width = width;
         this.status = status;
     }
+    
     
     public Order(int userId, int length, int height, int width) {
         this.userId = userId;
@@ -48,6 +60,10 @@ public class Order {
 
     public String getStatus() {
         return status;
+    }
+
+    public String getEmail() {
+        return email;
     }
     
     

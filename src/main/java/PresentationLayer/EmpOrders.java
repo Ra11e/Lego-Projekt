@@ -14,13 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 
-public class Employee extends Command{
+public class EmpOrders extends Command {
+
+    public EmpOrders() {
+    }
 
     @Override
     String execute(HttpServletRequest request, HttpServletResponse response) throws LoginSampleException {
+        ArrayList<Order> allOrders = LogicFacade.getAllOrders();
         
+        request.getSession().setAttribute("allOrders", allOrders);
         
-        return "employeepage";
+        return "emporders";
     }
 
 }

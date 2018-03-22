@@ -5,6 +5,7 @@
  */
 package DBAccess;
 
+import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -37,6 +38,34 @@ public class DataMapper {
         }
         return null;
     }
+    
+    public static ArrayList<Order> getAllOrders() {
+        try {
+            ArrayList<Order> orders = new ArrayList<>();
+            Connection con = Connector.connection();
+            String SQL = "SELECT orders.order_id, orders.user_id, orders.length, orders.height, orders.width, orders.status, users.email FROM useradmin.orders INNER JOIN useradmin.users on useradmin.orders.user_id = users.id order by orders.order_id;";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                int orderId = rs.getInt("order_id");
+                int id = rs.getInt("user_id");
+                int length = rs.getInt("length");
+                int height = rs.getInt("height");
+                int width = rs.getInt("width");
+                String status = rs.getString("status");
+                String email = rs.getString("email");
+
+                orders.add(new Order(orderId, id, length, height, width, status, email));
+
+            }
+            return orders;
+        } catch (ClassNotFoundException | SQLException e) {
+            return null;
+        }
+       // ArrayList<Order> orders = new ArrayList<>();
+        //orders.add(new Order(99, 99, 99, 99, 99, "shit", "Test"));
+        
+    }
 
     public static void createOrder(Order order) {
         try {
@@ -54,4 +83,17 @@ public class DataMapper {
             e.printStackTrace();
         }
     }
+    public static void changeStatus(int orderId) throws LoginSampleException {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "UPDATE useradmin.Orders SET orders.status = 'Sent' "
+                    + "where orders.Order_Id =?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, orderId);
+            ps.executeUpdate();
+        } catch (ClassNotFoundException | SQLException ex) {
+            //throw new LoginSampleException(ex.getMessage());
+        }
+    }
+    
 }

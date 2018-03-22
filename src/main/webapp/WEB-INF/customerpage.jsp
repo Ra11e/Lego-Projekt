@@ -18,6 +18,6 @@
         <%@include file="navbar.jsp" %>
         <h1>Hello <%=user.getEmail()%> </h1>
         <p><%=request.getSession().getAttribute("role")%></p>
-/       <h2>click <a href="FrontController?command=orders">here</a> to see your orders</h2>
+       <h2>click <a href="FrontController?command=orders">here</a> to see your orders</h2>
     </body>
 </html>

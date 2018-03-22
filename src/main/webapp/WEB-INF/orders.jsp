@@ -17,11 +17,24 @@
     <body>
         <%@include file="navbar.jsp" %>
         <h1>Here you can see your orders</h1>
-        <%
-            ArrayList<Order> orders = (ArrayList<Order>)request.getSession().getAttribute("orders");
-            for (Order order : orders) {
-                out.print("<p>"+ order.getHeight() +"</P>");
-            }
-        %>
+        
+        
+        
+        
+         <div class="container">
+            <div class="row">
+              <div class="col-sm-6">
+                <%
+                    ArrayList<Order> orders = (ArrayList<Order>)request.getSession().getAttribute("orders");
+                    for (Order order : orders) {
+                        out.print("<p><b>Order number: </b>"+order.getOrderId()+" <b>Length: </b> " + order.getLength() + " <b>Heigth: </b> "+ order.getHeight()+" <b>status: </b> " + order.getStatus() +"</P>");
+                    }
+                %>
+              </div>
+              <div class="col-sm-6">
+                <!--Der skal være en hvor man kan vælge ordrer her-->
+              </div>
+            </div>
+          </div> 
     </body>
 </html>

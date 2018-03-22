@@ -15,23 +15,31 @@
     <body>
         <%@include file="navbar.jsp" %>
         <h1>Order your Lego house here</h1>
-        
-         <form name="orderConfirmation" action="FrontController" method="POST">
-            <div class="form-group">
-              <label for="length">length</label>
-              <input type="number" class="form-control" id="length" name="length">
-            </div>
-            <div class="form-group">
-              <label for="heigth">heigth</label>
-              <input type="number" class="form-control" id="heigth" name="heigth">
-            </div>
-            <div class="form-group">
-              <label for="width">width</label>
-              <input type="number" class="form-control" id="width" name="width">
-            </div>
-             <input type="hidden" name="command" value="orderConfirmation">
 
-            <button type="submit" class="btn btn-default">Place Order</button>
-      </form> 
-    </body>
+
+        <div class="container">
+            <form name="orderConfirmation" action="FrontController" method="POST">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="length">length</label>
+                            <input type="number" class="form-control" id="length" name="length" step="1" min="10" max="100">
+                        </div>
+                        <div class="form-group">
+                            <label for="width">width</label>
+                            <input type="number" class="form-control" id="width" name="width" step="1" min="10" max="100">
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label for="heigth">heigth</label>
+                            <input type="number" class="form-control" id="heigth" name="heigth" step="1" min="10" max="100">
+                        </div>
+                        <button type="submit" class="btn btn-default">Place Order</button>
+                        <input type="hidden" name="command" value="orderConfirmation">
+                    </div>
+                </div>
+        </div> 
+    </form> 
+</body>
 </html>
