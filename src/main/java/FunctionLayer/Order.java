@@ -18,6 +18,13 @@ public class Order {
         this.width = width;
         this.status = status;
     }
+    
+    public Order(int userId, int length, int height, int width) {
+        this.userId = userId;
+        this.length = length;
+        this.height = height;
+        this.width = width;
+    }
 
     public int getOrderId() {
         return orderId;

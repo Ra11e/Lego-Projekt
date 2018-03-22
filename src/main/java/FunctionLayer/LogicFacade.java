@@ -26,5 +26,10 @@ public class LogicFacade {
         
         return orders;
     }
+    
+    public static void createOrder(int id, int length, int height, int width) {
+        Order order = new Order(id, length, height, width);
+        DataMapper.createOrder(order);
+    }
 
 }

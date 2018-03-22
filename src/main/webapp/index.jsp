@@ -9,11 +9,12 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"/>
         <title>Welcome page</title>
     </head>
     <body>
         <%@include file="WEB-INF/navbar.jsp" %>
-        <h1>Welcome to Sem 2</h1>
+        <h1>Welcome to Lego house</h1>
         
         <table>
             <tr><td>Login</td>
