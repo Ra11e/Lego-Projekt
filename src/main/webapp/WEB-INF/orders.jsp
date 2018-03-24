@@ -27,7 +27,7 @@
                 <%
                     ArrayList<Order> orders = (ArrayList<Order>)request.getSession().getAttribute("orders");
                     for (Order order : orders) {
-                        out.print("<p><b>Order number: </b>"+order.getOrderId()+" <b>Length: </b> " + order.getLength() + " <b>Heigth: </b> "+ order.getHeight()+" <b>status: </b> " + order.getStatus() +"</P>");
+                        out.print("<p><b>Order number: </b>"+order.getOrderId()+" <b>Length: </b> " + order.getLength() + " <b>Heigth: </b> "+ order.getHeight()+" <b>status: </b> " + order.getStatus() + "<a href=FrontController?command=pieceList&id=" + order.getOrderId() + "> Piece List</a></P>");
                     }
                 %>
               </div>
