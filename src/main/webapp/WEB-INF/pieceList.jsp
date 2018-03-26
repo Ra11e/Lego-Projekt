@@ -4,6 +4,8 @@
     Author     : rlumh
 --%>
 
+<%@page import="FunctionLayer.LegoHouse"%>
+<%@page import="FunctionLayer.Wall"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -16,6 +18,52 @@
          <%@include file="navbar.jsp" %>
         <h1>Hello World!</h1>
         
-        <p><%=request.getParameter("id")%>asdasd</P>
+        <h1>Orders</h1>
+        <%
+            LegoHouse house = (LegoHouse)request.getSession().getAttribute("legoHouse");
+        %>
+        <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Large</th>
+                        <th>Medium</th>
+                        <th>Small</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th>Front</th>
+                        <td><%=house.getFront().getLarge()%></td>
+                        <td><%=house.getFront().getMedium()%></td>
+                        <td><%=house.getFront().getSmall()%></td>
+                    </tr>
+                    <tr>
+                        <th>Back</th>
+                        <td><%=house.getBack().getLarge()%></td>
+                        <td><%=house.getBack().getMedium()%></td>
+                        <td><%=house.getBack().getSmall()%></td>
+                    </tr>
+                    <tr>
+                        <th>Left</th>
+                        <td><%=house.getLeft().getLarge()%></td>
+                        <td><%=house.getLeft().getMedium()%></td>
+                        <td><%=house.getLeft().getSmall()%></td>
+                    </tr>
+                    <tr>
+                        <th>Right</th>
+                        <td><%=house.getRight().getLarge()%></td>
+                        <td><%=house.getRight().getMedium()%></td>
+                        <td><%=house.getRight().getSmall()%></td>
+                    </tr>
+                    <tr>
+                        <th>Total</th>
+                        <td><%=house.getLarge()%></td>
+                        <td><%=house.getMedium()%></td>
+                        <td><%=house.getSmall()%></td>
+                    </tr>
+                </tbody>
+            </table>        
+                    
     </body>
 </html>

@@ -32,6 +32,10 @@ public class LogicFacade {
         return orders;
     }
     
+    public static Order getOrder(int id) {
+        return DataMapper.getOrder(id);
+    }
+    
     public static void createOrder(int id, int length, int height, int width) {
         Order order = new Order(id, length, height, width);
         DataMapper.createOrder(order);
@@ -39,6 +43,10 @@ public class LogicFacade {
     
     public static void changeStatus(int orderId) throws LoginSampleException {
         DataMapper.changeStatus(orderId);
+    }
+    
+    public static LegoHouse getLegoHouse(int length, int height, int width) {
+        return new LegoHouse(height, length, width);
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package DBAccess;
 
+import FunctionLayer.DataRetrievalException;
 import FunctionLayer.LoginSampleException;
 import FunctionLayer.Order;
 import java.sql.Connection;
@@ -15,7 +16,7 @@ import java.util.ArrayList;
 
 public class DataMapper {
 
-    public static ArrayList<Order> getOrders(int id) {
+    public static ArrayList<Order> getOrders(int id) throws DataRetrievalException {
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
@@ -35,11 +36,11 @@ public class DataMapper {
             }
             return orders;
         } catch (ClassNotFoundException | SQLException e) {
+            throw new DataRetrievalException(e.getMessage());
         }
-        return null;
     }
     
-    public static ArrayList<Order> getAllOrders() {
+    public static ArrayList<Order> getAllOrders() throws DataRetrievalException {
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
@@ -60,14 +61,13 @@ public class DataMapper {
             }
             return orders;
         } catch (ClassNotFoundException | SQLException e) {
-            return null;
+            throw new DataRetrievalException(e.getMessage());
+            //return null;
         }
-       // ArrayList<Order> orders = new ArrayList<>();
-        //orders.add(new Order(99, 99, 99, 99, 99, "shit", "Test"));
         
     }
 
-    public static void createOrder(Order order) {
+    public static void createOrder(Order order) throws DataRetrievalException {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO useradmin.orders (user_id, length, height, width) VALUES (?, ?, ?, ?)";
@@ -80,10 +80,10 @@ public class DataMapper {
             ps.executeUpdate();
 
         } catch (ClassNotFoundException | SQLException e) {
-            e.printStackTrace();
+            throw new DataRetrievalException(e.getMessage());
         }
     }
-    public static void changeStatus(int orderId) throws LoginSampleException {
+    public static void changeStatus(int orderId) throws DataRetrievalException {
         try {
             Connection con = Connector.connection();
             String SQL = "UPDATE useradmin.Orders SET orders.status = 'Sent' "
@@ -92,8 +92,32 @@ public class DataMapper {
             ps.setInt(1, orderId);
             ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException ex) {
-            //throw new LoginSampleException(ex.getMessage());
+            throw new DataRetrievalException(ex.getMessage());
         }
+    }
+
+    public static Order getOrder(int id) {
+        try {
+            Connection con = Connector.connection();
+            String SQL = "SELECT * FROM orders WHERE order_id=?";
+            PreparedStatement ps = con.prepareStatement(SQL);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                int orderId = rs.getInt("order_id");
+                int length = rs.getInt("length");
+                int height = rs.getInt("height");
+                int width = rs.getInt("width");
+                String status = rs.getString("status");
+
+                Order order = new Order(orderId, id, length, height, width, status);
+                return order;
+            }
+            
+        } catch (ClassNotFoundException | SQLException e) {
+            
+        }
+        return null;
     }
     
 }
