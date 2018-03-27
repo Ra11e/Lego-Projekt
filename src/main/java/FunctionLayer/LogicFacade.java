@@ -32,7 +32,7 @@ public class LogicFacade {
         return orders;
     }
     
-    public static Order getOrder(int id) {
+    public static Order getOrder(int id) throws DataRetrievalException {
         return DataMapper.getOrder(id);
     }
     

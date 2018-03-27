@@ -16,7 +16,7 @@ import java.util.ArrayList;
 
 public class DataMapper {
 
-    public static ArrayList<Order> getOrders(int id) throws DataRetrievalException {
+    public static ArrayList<Order> getOrders(int id) {
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
@@ -36,11 +36,11 @@ public class DataMapper {
             }
             return orders;
         } catch (ClassNotFoundException | SQLException e) {
-            throw new DataRetrievalException(e.getMessage());
         }
+        return null;
     }
     
-    public static ArrayList<Order> getAllOrders() throws DataRetrievalException {
+    public static ArrayList<Order> getAllOrders() {
         try {
             ArrayList<Order> orders = new ArrayList<>();
             Connection con = Connector.connection();
@@ -61,13 +61,14 @@ public class DataMapper {
             }
             return orders;
         } catch (ClassNotFoundException | SQLException e) {
-            throw new DataRetrievalException(e.getMessage());
-            //return null;
+            return null;
         }
+       // ArrayList<Order> orders = new ArrayList<>();
+        //orders.add(new Order(99, 99, 99, 99, 99, "shit", "Test"));
         
     }
 
-    public static void createOrder(Order order) throws DataRetrievalException {
+    public static void createOrder(Order order) {
         try {
             Connection con = Connector.connection();
             String SQL = "INSERT INTO useradmin.orders (user_id, length, height, width) VALUES (?, ?, ?, ?)";
@@ -80,10 +81,10 @@ public class DataMapper {
             ps.executeUpdate();
 
         } catch (ClassNotFoundException | SQLException e) {
-            throw new DataRetrievalException(e.getMessage());
+            e.printStackTrace();
         }
     }
-    public static void changeStatus(int orderId) throws DataRetrievalException {
+    public static void changeStatus(int orderId) throws LoginSampleException {
         try {
             Connection con = Connector.connection();
             String SQL = "UPDATE useradmin.Orders SET orders.status = 'Sent' "
@@ -92,11 +93,11 @@ public class DataMapper {
             ps.setInt(1, orderId);
             ps.executeUpdate();
         } catch (ClassNotFoundException | SQLException ex) {
-            throw new DataRetrievalException(ex.getMessage());
+            //throw new LoginSampleException(ex.getMessage());
         }
     }
 
-    public static Order getOrder(int id) {
+    public static Order getOrder(int id) throws DataRetrievalException {
         try {
             Connection con = Connector.connection();
             String SQL = "SELECT * FROM orders WHERE order_id=?";
@@ -115,7 +116,7 @@ public class DataMapper {
             }
             
         } catch (ClassNotFoundException | SQLException e) {
-            
+            throw new DataRetrievalException(e.getMessage());
         }
         return null;
     }

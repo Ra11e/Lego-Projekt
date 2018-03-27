@@ -27,6 +27,7 @@ public class OrderConfirmation extends Command{
             HttpSession session = request.getSession();
             User user = (User)session.getAttribute("user");
             LogicFacade.createOrder(user.getId(), length, height, width);
+        
             
             return user.getRole()+"page";
         
