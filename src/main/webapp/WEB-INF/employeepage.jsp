@@ -15,16 +15,15 @@
         <title>Employee home page</title>
     </head>
     <body>
-        <!--Kan ændres ved at gemme oplysninger i session-->
+        
         <% User user = (User) session.getAttribute("user"); %>
         <%@include file="navbar.jsp" %>
         <h1>Hello to the employee site <%=user.getEmail()%> </h1>
-        <p><%=request.getSession().getAttribute("role")%></p>
         
         
         You are now logged in as a EMPLOYEE, here you can modify orders.
         
-        <h2>click <a href="FrontController?command=emporders">here</a> to see your orders</h2>
+        <h2>click <a href="FrontController?command=emporders">here</a> to see ALL orders</h2>
         
     </body>
 </html>
