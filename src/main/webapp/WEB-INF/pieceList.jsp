@@ -29,6 +29,9 @@
                         <th>Large</th>
                         <th>Medium</th>
                         <th>Small</th>
+                        <th>Door</th>
+                        <th>Window</th>
+                        
                     </tr>
                 </thead>
                 <tbody>
@@ -37,30 +40,40 @@
                         <td><%=house.getFront().getLarge()%></td>
                         <td><%=house.getFront().getMedium()%></td>
                         <td><%=house.getFront().getSmall()%></td>
+                        <td>1</td>
+                        <td>0</td>
                     </tr>
                     <tr>
                         <th>Back</th>
                         <td><%=house.getBack().getLarge()%></td>
                         <td><%=house.getBack().getMedium()%></td>
                         <td><%=house.getBack().getSmall()%></td>
+                        <td>0</td>
+                        <td>1</td>
                     </tr>
                     <tr>
                         <th>Left</th>
                         <td><%=house.getLeft().getLarge()%></td>
                         <td><%=house.getLeft().getMedium()%></td>
                         <td><%=house.getLeft().getSmall()%></td>
+                        <td>0</td>
+                        <td>0</td>
                     </tr>
                     <tr>
                         <th>Right</th>
                         <td><%=house.getRight().getLarge()%></td>
                         <td><%=house.getRight().getMedium()%></td>
                         <td><%=house.getRight().getSmall()%></td>
+                        <td>0</td>
+                        <td>0</td>
                     </tr>
                     <tr>
                         <th>Total</th>
                         <td><%=house.getLarge()%></td>
                         <td><%=house.getMedium()%></td>
                         <td><%=house.getSmall()%></td>
+                        <td>1</td>
+                        <td>1</td>
                     </tr>
                 </tbody>
             </table>        
